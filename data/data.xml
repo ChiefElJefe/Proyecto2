@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record id="stages_1" model="proyecto2.stages">
+            <field name="name">Brainstorming</field>
+        </record>
+        <record id="stages_2" model="proyecto2.stages">
+            <field name="name">Design</field>
+        </record>
+        <record id="stages_3" model="proyecto2.stages">
+            <field name="name">Coding</field>
+        </record>
+        <record id="stages_4" model="proyecto2.stages">
+            <field name="name">Testing</field>
+        </record>
+        <record id="stages_5" model="proyecto2.stages">
+            <field name="name">Deployment</field>
+        </record>
+        <record id="stages_6" model="proyecto2.stages">
+            <field name="name">Feedback</field>
+        </record>
+    </data>
+</odoo>

@@ -1,2 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_proyecto2_proyecto2,proyecto2.proyecto2,model_proyecto2_proyecto2,base.group_user,1,1,1,1
+programer_access_development,Programer,model_proyecto2_developer,programer_access,1,1,0,0
+programer_access_stages,Programer,model_proyecto2_stages,programer_access,1,0,0,0
+designer_access_development,Designer,model_proyecto2_developer,designer_access,1,1,0,0
+designer_access_stages,Designer,model_proyecto2_stages,designer_access,1,0,0,0
+artist_access_development,Artist,model_proyecto2_developer,artist_access,1,1,0,0
+artist_access_stages,Artist,model_proyecto2_stages,artist_access,1,0,0,0
+director_access_development,Director,model_proyecto2_developer,director_access,1,1,1,1
+director_access_stages,Director,model_proyecto2_stages,director_access,1,1,1,1

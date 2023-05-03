@@ -1,0 +1,45 @@
+<odoo>
+    <record model="ir.module.category" id="proyecto2_security">
+        <field name="name">Development</field>
+        <field name="description">Access for Development</field>
+        <field name="sequence">7</field>
+    </record>
+    <record id="programer_access" model="res.groups">
+        <field name="name">Programmer</field>
+        <field name="category_id" ref="proyecto2_security"/>
+    </record>
+    <record id="designer_access" model="res.groups">
+        <field name="name">Designer</field>
+        <field name="category_id" ref="proyecto2_security"/>
+    </record>
+    <record id="artist_access" model="res.groups">
+        <field name="name">Artist</field>
+        <field name="category_id" ref="proyecto2_security"/>
+    </record>
+    <record id="director_access" model="res.groups">
+        <field name="name">Director</field>
+        <field name="category_id" ref="proyecto2_security"/>
+        <field name="implied_ids" eval="[(4, ref('programer_access')),(4, ref('designer_access')),(4, ref('artist_access'))]"/>
+    </record>
+
+    <record model="ir.rule" id="development_record_type_programming_rule">
+        <field name="name">The programmer only sees your user's type</field>
+        <field name="model_id" ref="model_proyecto2_developer"/>
+        <field name="domain_force">[('type', '=', 'programming')]</field>
+        <field name="groups" eval="[(4, ref('programer_access'))]"/>
+    </record>
+
+    <record model="ir.rule" id="development_record_type_design_rule">
+        <field name="name">The designer only sees your user's type</field>
+        <field name="model_id" ref="model_proyecto2_developer"/>
+        <field name="domain_force">[('type', '=', 'design')]</field>
+        <field name="groups" eval="[(4, ref('designer_access'))]"/>
+    </record>
+
+    <record model="ir.rule" id="development_record_type_art_rule">
+        <field name="name">The artist only sees your user's type</field>
+        <field name="model_id" ref="model_proyecto2_developer"/>
+        <field name="domain_force">[('type', '=', 'art')]</field>
+        <field name="groups" eval="[(4, ref('artist_access'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+    <record model="ir.ui.view" id="proyecto2_stages_tree">
+        <field name="name">proyecto2.stages.tree</field>
+        <field name="model">proyecto2.stages</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="proyecto2_stages_form">
+        <field name="name">proyecto2.stages.form</field>
+        <field name="model">proyecto2.stages</field>
+        <field name="arch" type="xml">
+            <form string="Repairs">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="proyecto2_stages_search">
+        <field name="name">proyecto2.stages.search</field>
+        <field name="model">proyecto2.stages</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecto2_stages_action">
+        <field name="name">Development Stages</field>
+        <field name="res_model">proyecto2.stages</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Development Stages" id="proyecto2.menu_2" parent="proyecto2.menu_root"/>
+
+    <menuitem name="Development Stages" id="proyecto2.menu_2_list" parent="proyecto2.menu_2"
+              action="proyecto2_stages_action"/>
+</odoo>

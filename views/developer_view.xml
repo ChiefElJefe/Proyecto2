@@ -7,9 +7,24 @@
                 <tree>
                     <field name="name"/>
                     <field name="user_id"/>
+                    <field name="type"/>
                     <field name="start_date"/>
                     <field name="deadline"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="proyecto2_developer_calendar">
+            <field name="name">proyecto2.developer.calendar</field>
+            <field name="model">proyecto2.developer</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar Dates" date_start="start_date" date_stop="deadline" color="name">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="type"/>
+                    <field name="start_date"/>
+                    <field name="deadline"/>
+                </calendar>
             </field>
         </record>
 
@@ -17,16 +32,17 @@
             <field name="name">proyecto2.developer.form</field>
             <field name="model">proyecto2.developer</field>
             <field name="arch" type="xml">
-                <form string="Develop">
-                    <!--                    <header>-->
-                    <!--                        <field name="stage_id" widget="statusbar"/>-->
-                    <!--                    </header>-->
+                <form string="Development">
+                    <header>
+                        <field name="stage_id" widget="statusbar"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="user_id"/>
+                            <field name="type"/>
                             <!--                            <field name="subject" widget="selection"/>-->
-                            <!--                            <field name="kanban_state" widget="selection_badge" class="ml-auto"/>-->
+                            <field name="kanban_state" widget="selection_badge" class="ml-auto"/>
                         </group>
                         <group>
                             <field name="start_date"/>
@@ -40,49 +56,61 @@
             </field>
         </record>
 
-        <!--        <record model="ir.ui.view" id="proyecto_ticket_kanban">-->
-        <!--            <field name="name">proyecto.ticket.kanban</field>-->
-        <!--            <field name="model">proyecto.ticket</field>-->
-        <!--            <field name="arch" type="xml">-->
-        <!--                <kanban default_group_by="stage_id" string="Ticket">-->
-        <!--                    <field name="name"/>-->
-        <!--                    <field name="email"/>-->
-        <!--                    <field name="subject" widget="selection"/>-->
-        <!--                    <field name="description"/>-->
-        <!--                    <field name="stage_id"/>-->
-        <!--                    <field name="kanban_state"/>-->
-        <!--                    <progressbar field="kanban_state"-->
-        <!--                                 colors='{"start": "danger", "working_in_it": "warning", "fixed": "success"}'/>-->
-        <!--                    <templates>-->
-        <!--                        <t t-name="kanban-box">-->
-        <!--                            <div class="oe_kanban_global_click" t-att-data-id="record.id">-->
-        <!--                                <div class="oe_kanban_details">-->
-        <!--                                    <strong class="o_kanban_record_title">-->
-        <!--                                        <field name="display_name"/>-->
-        <!--                                    </strong>-->
-        <!--                                    <div class="o_kanban_tags_section"/>-->
-        <!--                                    <ul>-->
-        <!--                                        <li>-->
-        <!--                                            Email:-->
-        <!--                                            <field name="email"/>-->
-        <!--                                        </li>-->
-        <!--                                        <li>-->
-        <!--                                            Subject:-->
-        <!--                                            <field name="subject"/>-->
-        <!--                                        </li>-->
-        <!--                                    </ul>-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </t>-->
-        <!--                    </templates>-->
-        <!--                </kanban>-->
-        <!--            </field>-->
-        <!--        </record>-->
+        <record model="ir.ui.view" id="proyecto2_developer_kanban">
+            <field name="name">proyecto2.developer.kanban</field>
+            <field name="model">proyecto2.developer</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" string="Development">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="type"/>
+<!--                    <field name="email"/>-->
+<!--                    <field name="subject" widget="selection"/>-->
+                    <field name="start_date"/>
+                    <field name="deadline"/>
+                    <field name="description"/>
+                    <field name="stage_id"/>
+                    <field name="kanban_state"/>
+                    <progressbar field="kanban_state"
+                                 colors='{"start": "danger", "in_progress": "warning", "completed": "success"}'/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" t-att-data-id="record.id">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="display_name"/>
+                                    </strong>
+                                    <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>
+                                            User:
+                                            <field name="user_id"/>
+                                        </li>
+                                        <li>
+                                            Type:
+                                            <field name="type"/>
+                                        </li>
+                                        <li>
+                                            Start Date:
+                                            <field name="start_date"/>
+                                        </li>
+                                        <li>
+                                            Deadline:
+                                            <field name="deadline"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
         <record model="ir.actions.act_window" id="proyecto2_developer_action">
             <field name="name">Development</field>
             <field name="res_model">proyecto2.developer</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
         </record>
 
         <menuitem name="Development" id="proyecto2.menu_root"/>
